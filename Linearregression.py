@@ -10,11 +10,11 @@ Y=[]
 for k in X:
     Y.append(1.8*k+32+r.random())
 
-plt.plot(X,Y,"-*r")
+plt.plot(X,Y,"-*r")#X and Y here must be iterable 1dimensional
 plt.show()
-X=np.array(X).reshape(-1,1)
-Y=np.array(Y).reshape(-1,1)
-xtrain,xtest,ytrain,ytest=model_selection.train_test_split(X,Y,test_size=0.3)
+X=np.array(X).reshape(-1,1)#X must be 2d numpy array
+Y=np.array(Y).reshape(-1,1)#Y can be 1d or 2d numpy array
+xtrain,xtest,ytrain,ytest=model_selection.train_test_split(X,Y,test_size=0.3)//returns all are nparrays
 xtest=np.array([[0],[100]])
 ytest=np.array([[32],[212]])
 print(xtrain)
@@ -26,6 +26,6 @@ model.fit(xtrain,ytrain)
 accuracy=model.score(xtest,ytest)
 print(accuracy*100)
 print(model.coef_,model.intercept_)
-x=model.predict(np.array([[1000]]))
+x=model.predict(np.array([[1000]]))#input must be 2d numpy array as X and output will be 1d numpy array
 print(x)
 
